@@ -27,7 +27,7 @@ fn commit() {
   let cmd = Command::new("/bin/git")
     .arg("commit")
     .arg("-m")
-    .arg(&args[0])
+    .arg(&args[2])
     .output()
     .expect("failed to execute process");
   println!("{}", String::from_utf8_lossy(&cmd.stdout));
