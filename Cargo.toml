@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 description = "A git wrapper"
 license-file = "LICENSE"
+readme-file = "README.md"
 
 [[bin]]
 name = "rit"
