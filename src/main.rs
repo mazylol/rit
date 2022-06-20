@@ -3,7 +3,7 @@ use std::process::Command;
 
 fn main() {
   let args: Vec<String> = env::args().collect();
-  let cmds = &args[1];
+  let cmds: &String = &args[1];
 
   if cmds == "" {
     println!("Enter a command to run");
@@ -15,6 +15,8 @@ fn main() {
     add();
   } else if cmds == "reset" {
     reset();
+  } else if cmds == "push" {
+    push();
   } else {
     println!("Invalid command");
   }
@@ -56,3 +58,19 @@ fn reset() {
   println!("{}", String::from_utf8_lossy(&cmd.stdout));
   println!("{}", String::from_utf8_lossy(&cmd.stderr));
 }
+
+fn push() {
+  let cmd = Command::new("/bin/git")
+    .arg("push")
+    .arg("origin")
+    .arg("master")
+    .output()
+    .expect("failed to execute process");
+  println!("{}", String::from_utf8_lossy(&cmd.stdout));
+  println!("{}", String::from_utf8_lossy(&cmd.stderr));
+}
+
+//fn doitall() {
+  //add();
+  //commit();
+//}
