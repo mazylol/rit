@@ -1,8 +1,16 @@
 use std::env;
 use std::process::Command;
+use std::process::exit;
 
 fn main() {
+  
   let args: Vec<String> = env::args().collect();
+
+  if args.len() < 2 {
+    println!("Usage: {} <command>", args[0]);
+    exit(1);
+  }
+  
   let cmds: &String = &args[1];
 
   if cmds == "" {
