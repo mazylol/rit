@@ -1,16 +1,15 @@
 use std::env;
-use std::process::Command;
 use std::process::exit;
+use std::process::Command;
 
 fn main() {
-  
   let args: Vec<String> = env::args().collect();
 
   if args.len() < 2 {
     println!("Usage: {} <command>", args[0]);
     exit(1);
   }
-  
+
   let cmds: &String = &args[1];
 
   if cmds == "" {
@@ -101,7 +100,8 @@ fn diff() {
 
 fn init() {
   let args: Vec<String> = env::args().collect();
-  let cmd = Command::new("/bin/git").arg("init").arg(&args[2]).output().expect("failed to execute process");
+  let cmd =
+    Command::new("/bin/git").arg("init").arg(&args[2]).output().expect("failed to execute process");
   println!("{}", String::from_utf8_lossy(&cmd.stdout));
   println!("{}", String::from_utf8_lossy(&cmd.stderr));
 }
