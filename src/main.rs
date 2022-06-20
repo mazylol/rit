@@ -26,6 +26,8 @@ fn main() {
     push();
   } else if cmds == "doitall" {
     doitall();
+  } else if cmds == "dia" {
+    doitall();
   } else if cmds == "diff" {
     diff();
   } else if cmds == "init" {
@@ -116,7 +118,7 @@ fn help() {
     add <'file'> or <-A>
     reset
     push
-    doitall (adds all files, commits, pushes) <'message'>
+    doitall, dia (adds all files, commits, pushes) <'message'>
     diff
     init <'directory'>
     ")
