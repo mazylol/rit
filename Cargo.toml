@@ -1,6 +1,7 @@
 [package]
 description = "A git wrapper"
 edition = "2021"
+homepage = "https://rit.mazy.tk"
 license-file = "LICENSE"
 name = "rit-mazy"
 readme = "README.md"
