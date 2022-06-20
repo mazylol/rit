@@ -1,10 +1,11 @@
 [package]
 name = "rit-mazy"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "A git wrapper"
 license-file = "LICENSE"
 readme = "README.md"
+repository = "https://github.com/mazylol/rit"
 
 [[bin]]
 name = "rit"
