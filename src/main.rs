@@ -30,6 +30,8 @@ fn main() {
     diff();
   } else if cmds == "init" {
     init();
+  } else if cmds == "help" {
+    help();
   } else {
     println!("Invalid command!");
   }
@@ -104,4 +106,18 @@ fn init() {
     Command::new("/bin/git").arg("init").arg(&args[2]).output().expect("failed to execute process");
   println!("{}", String::from_utf8_lossy(&cmd.stdout));
   println!("{}", String::from_utf8_lossy(&cmd.stderr));
+}
+
+fn help() {
+  println!("
+  Usage:
+    status
+    commit <'message'>
+    add <'file'> or <-A>
+    reset
+    push
+    doitall (adds all files, commits, pushes) <'message'>
+    diff
+    init <'directory'>
+    ")
 }
