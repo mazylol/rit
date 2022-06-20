@@ -17,6 +17,8 @@ fn main() {
     reset();
   } else if cmds == "push" {
     push();
+  } else if cmds == "doitall" {
+    doitall();
   } else {
     println!("Invalid command");
   }
@@ -70,7 +72,11 @@ fn push() {
   println!("{}", String::from_utf8_lossy(&cmd.stderr));
 }
 
-//fn doitall() {
-  //add();
-  //commit();
-//}
+fn doitall() {
+  let cmd =
+    Command::new("/bin/git").arg("add").arg("-A").output().expect("failed to execute process");
+  println!("{}", String::from_utf8_lossy(&cmd.stdout));
+  println!("{}", String::from_utf8_lossy(&cmd.stderr));
+  commit();
+  push();
+}
