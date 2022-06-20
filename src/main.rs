@@ -19,8 +19,12 @@ fn main() {
     push();
   } else if cmds == "doitall" {
     doitall();
+  } else if cmds == "diff" {
+    diff();
+  } else if cmds == "init" {
+    init();
   } else {
-    println!("Invalid command");
+    println!("Invalid command!");
   }
 }
 
@@ -79,4 +83,17 @@ fn doitall() {
   println!("{}", String::from_utf8_lossy(&cmd.stderr));
   commit();
   push();
+}
+
+fn diff() {
+  let cmd = Command::new("/bin/git").arg("diff").output().expect("failed to execute process");
+  println!("{}", String::from_utf8_lossy(&cmd.stdout));
+  println!("{}", String::from_utf8_lossy(&cmd.stderr));
+}
+
+fn init() {
+  let args: Vec<String> = env::args().collect();
+  let cmd = Command::new("/bin/git").arg("init").arg(&args[2]).output().expect("failed to execute process");
+  println!("{}", String::from_utf8_lossy(&cmd.stdout));
+  println!("{}", String::from_utf8_lossy(&cmd.stderr));
 }
