@@ -47,8 +47,11 @@ fn commit() {
 
 fn add() {
     let args: Vec<String> = env::args().collect();
-    let cmd =
-        Command::new("/bin/git").arg("add").arg(&args[2]).output().expect("failed to execute process");
+    let cmd = Command::new("/bin/git")
+        .arg("add")
+        .arg(&args[2])
+        .output()
+        .expect("failed to execute process");
     println!("{}", String::from_utf8_lossy(&cmd.stdout));
     println!("{}", String::from_utf8_lossy(&cmd.stderr));
 }
@@ -92,14 +95,18 @@ fn diff() {
 
 fn init() {
     let args: Vec<String> = env::args().collect();
-    let cmd =
-        Command::new("/bin/git").arg("init").arg(&args[2]).output().expect("failed to execute process");
+    let cmd = Command::new("/bin/git")
+        .arg("init")
+        .arg(&args[2])
+        .output()
+        .expect("failed to execute process");
     println!("{}", String::from_utf8_lossy(&cmd.stdout));
     println!("{}", String::from_utf8_lossy(&cmd.stderr));
 }
 
 fn help() {
-    println!("
+    println!(
+        "
   Usage:
     status, s
     commit, c <'message'>
@@ -109,5 +116,6 @@ fn help() {
     doitall, dia (adds all files, commits, pushes) <'message'>
     diff, d
     init, i <'directory'>
-    ");
+    "
+    );
 }
